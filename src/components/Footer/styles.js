@@ -7,7 +7,7 @@ import { colors, metrics } from '~/styles';
 
 export const Container = styled.View`
   background: #fff;
-  height: ${50 + getBottomSpace()}px;
+  height: ${metrics.basePadding * 5 + getBottomSpace()}px;
   width: 100%;
 
   flex-direction: row;
