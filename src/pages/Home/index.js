@@ -15,8 +15,12 @@ import {
   Loading,
 } from './styles';
 
-const Home = () => {
+const Home = ({ navigation }) => {
   const { data: products, loading } = useSelector(state => state.products);
+
+  const handleProductPress = (product) => {
+    navigation.navigate('Detail', { product });
+  };
 
   return (
     <Container>
@@ -29,7 +33,7 @@ const Home = () => {
           keyExtractor={product => String(product.id)}
           numColumns={2}
           renderItem={({ item: product }) => (
-            <Product onPress={{}}>
+            <Product onPress={() => handleProductPress(product)}>
               <Image source={{ uri: product.image }} />
               <Details>
                 <Name>{product.name}</Name>

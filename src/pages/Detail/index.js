@@ -1,9 +1,39 @@
 import React from 'react';
+import {
+  Container,
+  ProductCard,
+  Image,
+  DetailsContent,
+  Details,
+  Name,
+  Brand,
+  Price,
+  Button,
+  ButtonText,
+} from './styles';
 
-import { View } from 'react-native';
+const Detail = ({ navigation }) => {
+  const product = navigation.getParam('product');
 
-// import { Container } from './styles';
+  return (
+    <Container>
+      <ProductCard>
+        <Image source={{ uri: product.image }} />
+        <DetailsContent>
+          <Details>
+            <Name>{product.name}</Name>
+            <Brand>{product.brand}</Brand>
+          </Details>
 
-const Detail = () => <View />;
+          <Price>{`R$ ${product.price}`}</Price>
+        </DetailsContent>
+
+        <Button>
+          <ButtonText>Adicionar ao carrinho</ButtonText>
+        </Button>
+      </ProductCard>
+    </Container>
+  );
+};
 
 export default Detail;
