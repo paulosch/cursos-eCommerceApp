@@ -11,6 +11,12 @@ export const Container = styled.View`
 
 export const ProductList = styled.FlatList.attrs({})``;
 
+export const EmpytCart = styled.Text`
+  width: 100%;
+  text-align: center;
+  font-size: 18px;
+`;
+
 export const ItemContent = styled.View`
   padding: ${metrics.basePadding}px;
   margin-bottom: ${metrics.baseMargin}px;
@@ -75,6 +81,7 @@ export const Totais = styled.View`
   padding: ${metrics.basePadding}px;
   align-items: center;
   justify-content: center;
+  margin-top: auto;
 `;
 
 export const LabelSubTotal = styled.Text`
