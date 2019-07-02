@@ -37,11 +37,18 @@ const Cart = () => {
     return subTotal;
   };
 
-  const handleChangeQty = (productId, qty) => {
-    const productIndex = products.findIndex(product => product.id === productId);
-    products[productIndex].qty = qty;
+  const handleChangeQty = (product, qty) => {
+    const data = [...products];
+    const newProduct = { ...product };
+    newProduct.qty = qty;
 
-    dispatch(CartActions.handleChangeQty(products));
+    const productIndex = data.findIndex(item => item.id === newProduct.id);
+    data[productIndex] = newProduct;
+    dispatch(CartActions.handleChangeQty(data));
+  };
+
+  const removeProduct = (product) => {
+    dispatch(CartActions.removeProduct(product));
   };
 
   return (
@@ -66,9 +73,9 @@ const Cart = () => {
                 <Quantity
                   value={String(product.qty)}
                   keyboardType="numeric"
-                  onChangeText={text => handleChangeQty(product.id, text)}
+                  onChangeText={text => handleChangeQty(product, text)}
                 />
-                <Button>
+                <Button onPress={() => removeProduct(product)}>
                   <DeleteIcon name="delete" size={24} />
                 </Button>
               </ActionsContent>
